@@ -132,3 +132,24 @@ neutral = sum(Sentiment_Score$score == 0)
 
 SentimentAnalysis = c(positive, neutral, negative)
 
+SentimentAnalysis$Words = c("Positive", "Neutral", "Negative")
+
+SentimentAnalysis = data.frame(SentimentAnalysis)
+
+barplot(SentimentAnalysis$SentimentAnalysis, data = SentimentAnalysis, names = SentimentAnalysis$Words, xlab = "Words", ylab = "Score", main = "Predictive score for words", col = c("Green", "Blue", "Red"))
+
+#Word Cloud
+
+length(Sentiment_Score$text)
+
+str(Sentiment_Score)
+Sentiment_Score$Emotion = "Positive"
+
+i=0
+for (i in 1:nrow(Sentiment_Score))
+{
+  if(Sentiment_Score$score[i] == 0)
+  {
+    Sentiment_Score$Emotion = "Neutral"
+  }
+}
